@@ -1,0 +1,16 @@
+thundery showers https://fontawesome.com/icons/bolt?style=solid
+
+passing showers https://fontawesome.com/icons/cloud-showers-heavy?style=solid
+showers
+
+light rain https://fontawesome.com/icons/cloud-sun-rain?style=solid
+
+fair https://fontawesome.com/icons/cloud-sun?style=solid
+fair & warm
+
+fair (night) https://fontawesome.com/icons/cloud-moon?style=solid
+
+partly cloudy https://fontawesome.com/icons/cloud?style=solid
+cloudy
+
+windy https://fontawesome.com/icons/wind?style=solid
