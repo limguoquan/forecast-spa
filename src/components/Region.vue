@@ -1,18 +1,16 @@
 <template>
-	<div>
-		<div class="wrapper">
-			<div class="title">Region Forecast</div>
-			<div v-if="selected">
-				<div class="forecast">{{ region }}</div>
-				<div class="weatherIcon">
-					<i :class="icon"></i>
-				</div>
+	<div class="wrapper">
+		<div class="title">Region Forecast</div>
+		<div v-if="selected">
+			<div class="forecast">{{ region }}</div>
+			<div class="weatherIcon">
+				<i :class="icon"></i>
 			</div>
-			<div v-else>
-				<div class="forecast">Choose Region</div>
-				<div class="weatherIcon">
-					<i class="fas fa-sort-down"></i>
-				</div>
+		</div>
+		<div v-else>
+			<div class="forecast">Choose Region</div>
+			<div class="weatherIcon">
+				<i class="fas fa-sort-down"></i>
 			</div>
 		</div>
 		<div class="dropdown">
@@ -74,7 +72,7 @@ export default {
 				}
 			} else if (regionForecast.includes('windy')) {
 				this.icon = 'fas fa-wind';
-				this.backgroundImg = 'windy.jpg'
+				this.backgroundImg = 'cloudy.jpg'
 			}
 			this.$emit('add-region-weather', this.backgroundImg);
 		}

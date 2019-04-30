@@ -55,7 +55,7 @@ export default {
 			}
 		} else if (this.generalForecast.toLowerCase().includes('windy')) {
 			this.icon = 'fas fa-wind';
-			this.backgroundImg = 'windy.jpg';
+			this.backgroundImg = 'cloudy.jpg';
 		}
 		this.$emit('add-general-weather', this.backgroundImg);
 	}
@@ -63,5 +63,6 @@ export default {
 </script>
 
 <style scoped>
+
 
 </style>

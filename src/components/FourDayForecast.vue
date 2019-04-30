@@ -45,4 +45,21 @@ export default {
 
 <style scoped>
 
+	.forecast, .title {
+		background-color: transparent;
+		opacity: 0.7;
+		transition: 0.3s ease-in-out;
+	}
+
+	.forecast:hover, .title:hover {
+		opacity: 1;
+		background-color: black;
+	}
+
+	@media only screen and (max-width: 768px) {
+		.forecast, .title {
+			opacity: 1;
+		}
+	}
+
 </style>

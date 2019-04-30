@@ -1,18 +1,16 @@
 <template>
-	<div>
-		<div class="wrapper">
-			<div class="title">Area Forecast</div>
-			<div v-if="areaForecast">
-				<div class="forecast">{{ areaForecast }}</div>
-				<div class="weatherIcon">
-					<i :class="icon"></i>
-				</div>
+	<div class="wrapper">
+		<div class="title">Area Forecast</div>
+		<div v-if="areaForecast">
+			<div class="forecast">{{ areaForecast }}</div>
+			<div class="weatherIcon">
+				<i :class="icon"></i>
 			</div>
-			<div v-else>
-				<div class="forecast">Choose Area</div>
-				<div class="weatherIcon">
-					<i class="fas fa-sort-down"></i>
-				</div>
+		</div>
+		<div v-else>
+			<div class="forecast">Choose Area</div>
+			<div class="weatherIcon">
+				<i class="fas fa-sort-down"></i>
 			</div>
 		</div>
 		<div class="dropdown">
@@ -70,7 +68,7 @@ export default {
 				}
 			} else if (val.toLowerCase().includes('windy')) {
 				this.icon = 'fas fa-wind';
-				this.backgroundImg = 'windy.jpg';
+				this.backgroundImg = 'cloudy.jpg';
 			}
 			this.$emit('add-area-weather', this.backgroundImg);
 		}

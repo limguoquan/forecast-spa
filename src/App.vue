@@ -1,28 +1,25 @@
 <template>
 	<div id="app">
-		<div class="row main">
-			<div class="filler col-2">
+		<div class="row upper-half">
+			<div class="col-2">
 				<TempHumidity :temperature="weather.items[0].general.temperature" :relativeHumidity="weather.items[0].general.relative_humidity"/>
 			</div>
-			<div class="col-5" :style="setGeneralImg">
+			<div class="col-5 item" :style="setGeneralImg">
 				<General v-on:add-general-weather="addGeneralWeather" :generalForecast="weather.items[0].general.forecast" :iconNames="iconNames" />
 			</div>
-			<div class="col-5" :style="setRegionImg">
+			<div class="col-5 item" :style="setRegionImg">
 				<Region v-on:add-region-weather="addRegionWeather" :regionsForecast="weather.items[0].periods[0].regions" :iconNames="iconNames" />
 			</div>
 		</div>
-		<div class="row main">
+		<div class="row lower-half">
 			<div class="filler col-2"></div>
-			<div class="col-5" :style="setAreaImg">
-				<TwoHourForecast v-on:add-area-weather="addAreaWeather" :twoHourForecast="twoHourForecast.items[0].forecasts" :iconNames="iconNames" />
-			</div>
 			<div class="col-5">
 				<FourDayForecast :fourDayForecast="fourDayForecast.items[0].forecasts" />
 			</div>
-		</div>
-			
-
-		
+			<div class="col-5 item" :style="setAreaImg">
+				<TwoHourForecast v-on:add-area-weather="addAreaWeather" :twoHourForecast="twoHourForecast.items[0].forecasts" :iconNames="iconNames" />
+			</div>
+		</div>		
 	</div>
 </template>
 
@@ -86,57 +83,32 @@ export default {
 		},
 		addAreaWeather(weather) {
 			this.areaWeather = weather;
+		},
+		setBackgroundImg(weather) {
+			switch(weather) {
+				case 'thundery.jpg':
+					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/thundery.jpg') + ')'
+				case 'cloudy.jpg':
+					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/cloudy.jpg') + ')'
+				case 'fair.jpg':
+					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/fair.jpg') + ')'
+				case 'fairNight.jpg':
+					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/fairNight.jpg') + ')'
+				case 'showers.jpg':
+					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/showers.jpg') + ')'
+			}
 		}
 	},
 	computed: {
 		setGeneralImg() {
-			switch(this.generalWeather) {
-				case 'thundery.jpg':
-					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/thundery.jpg') + ')'
-				case 'cloudy.jpg':
-					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/cloudy.jpg') + ')'
-				case 'fair.jpg':
-					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/fair.jpg') + ')'
-				case 'fairNight.jpg':
-					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/fairNight.jpg') + ')'
-				case 'showers.jpg':
-					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/showers.jpg') + ')'
-				case 'windy.jpg':
-					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/windy.jpg') + ')'
-			}
+			return this.setBackgroundImg(this.generalWeather);
 		},
 		setRegionImg() {
-			switch(this.regionWeather) {
-				case 'thundery.jpg':
-					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/thundery.jpg') + ')'
-				case 'cloudy.jpg':
-					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/cloudy.jpg') + ')'
-				case 'fair.jpg':
-					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/fair.jpg') + ')'
-				case 'fairNight.jpg':
-					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/fairNight.jpg') + ')'
-				case 'showers.jpg':
-					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/showers.jpg') + ')'
-				case 'windy.jpg':
-					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/windy.jpg') + ')'
-			}
+			return this.setBackgroundImg(this.regionWeather);
 		},
 		setAreaImg() {
-			switch(this.areaWeather) {
-				case 'thundery.jpg':
-					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/thundery.jpg') + ')'
-				case 'cloudy.jpg':
-					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/cloudy.jpg') + ')'
-				case 'fair.jpg':
-					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/fair.jpg') + ')'
-				case 'fairNight.jpg':
-					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/fairNight.jpg') + ')'
-				case 'showers.jpg':
-					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/showers.jpg') + ')'
-				case 'windy.jpg':
-					return 'backgroundImage: ' + 'url(' + require('./assets/backgroundImg/windy.jpg') + ')'
-			}
-		},
+			return this.setBackgroundImg(this.areaWeather);
+		}
 	}
 }
 </script>
