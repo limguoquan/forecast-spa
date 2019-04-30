@@ -1,16 +1,12 @@
 <template>
-	<div class="row">
-		<div class="col-2"></div>
-		<div class="col-3">
-			<h1 class="title">Future Forecasts</h1>
-			<div class="wrapper" v-for="forecast in fourDayForecast">
-				<div class="date">{{ dayOfWeek(forecast) }}<br>{{ forecast.date }}</div>
-				<div class="temp-forecast">{{ forecast.temperature.low }} - {{ forecast.temperature.high }}&#8451;
-					<br>{{ forecast.forecast.substring(0, forecast.forecast.length-1) }} 
-				</div> <!-- to remove the full stop at the end -->
-			</div>
+	<div class="wrapper">
+		<div class="title">Future Forecasts</div>
+		<div class="forecast" v-for="forecast in fourDayForecast">
+			<div class="date">{{ dayOfWeek(forecast) }}<br>{{ forecast.date }}</div>
+			<div class="temp-forecast">{{ forecast.temperature.low }} - {{ forecast.temperature.high }}&#8451;
+				<br>{{ forecast.forecast.substring(0, forecast.forecast.length-1) }} 
+			</div> <!-- to remove the full stop at the end -->
 		</div>
-		<div class="col-7"></div>
 	</div>
 </template>
 
@@ -48,18 +44,5 @@ export default {
 </script>
 
 <style scoped>
-
-	.wrapper {
-		padding-bottom: 10%;
-	}
-
-	.date {
-		font-weight: bold;
-		padding-bottom: 2%;
-	}
-
-	.temp-forecast {
-		font-size: 1.2em;
-	}
 
 </style>

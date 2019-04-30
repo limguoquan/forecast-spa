@@ -1,8 +1,7 @@
 <template>
 	<div>
 		<div class="wrapper">
-			<h1 class="title">Area Forecast</h1>
-			<div class="sub-title">Updates every 2-hrs</div>
+			<div class="title">Area Forecast</div>
 			<div v-if="areaForecast">
 				<div class="forecast">{{ areaForecast }}</div>
 				<div class="weatherIcon">
@@ -38,32 +37,42 @@ export default {
 	data() {
 		return {
 			areaForecast: '',
-			icon: ''
+			icon: '',
+			backgroundImg: ''
 		}
 	},
 	watch: {
 		areaForecast: function(val) {
 			if (val.toLowerCase().includes('thunder')) {
 				this.icon = 'fas fa-bolt';
+				this.backgroundImg = 'thundery.jpg';
 			} else if (val.toLowerCase().includes('showers')) {
 				this.icon = 'fas fa-cloud-showers-heavy';
+				this.backgroundImg = 'showers.jpg';
 			} else if (val.toLowerCase().includes('rain')) {
 				if (val.toLowerCase().includes('light')) {
 					this.icon = 'fas fa-cloud-sun-rain';
+					this.backgroundImg = 'showers.jpg';
 				} else {
 					this.icon = 'fas fa-cloud-showers-heavy';
+					this.backgroundImg = 'showers.jpg';
 				}
 			} else if (val.toLowerCase().includes('cloudy')) {
 				this.icon = 'fas fa-cloud';
+				this.backgroundImg = 'cloudy.jpg';
 			} else if (val.toLowerCase().includes('fair')) {
 				if (val.toLowerCase().includes('night')) {
 					this.icon = 'fas fa-cloud-moon';
+					this.backgroundImg = 'fairNight.jpg';
 				} else {
 					this.icon = 'fas fa-cloud-sun';
+					this.backgroundImg = 'fair.jpg';
 				}
 			} else if (val.toLowerCase().includes('windy')) {
 				this.icon = 'fas fa-wind';
+				this.backgroundImg = 'windy.jpg';
 			}
+			this.$emit('add-area-weather', this.backgroundImg);
 		}
 	}
 }	
@@ -71,21 +80,5 @@ export default {
 
 <style scoped>
 
-.dropdown {
-		display: flex;
-		justify-content: flex-start;
-		padding-top: 5%;
-	}
-
-	.select {
-		font-size: 1em;
-		cursor: pointer;
-	}
-
-	@media only screen and (max-width: 768px) {
-		.dropdown {
-			justify-content: center;
-		}
-	}
 
 </style>

@@ -1,9 +1,7 @@
 <template>
-	<div class="row">
-		<div class="col-2"></div> 
-		<div class="forecast col-3">{{ temperature.low }} - {{ temperature.high }}&#8451;</div> 
-		<div class="forecast col-3">{{ relativeHumidity.low }} - {{ relativeHumidity.high }} % <i class="fas fa-tint"></i></div>
-		<div class="col-4"></div>
+	<div class="tempHumidity">
+		<div class="temp">{{ temperature.low }} - {{ temperature.high }}&#8451;</div> 
+		<div class="humidity">{{ relativeHumidity.low }} - {{ relativeHumidity.high }} % <i class="fas fa-tint"></i></div>
 	</div>
 </template>
 
@@ -27,9 +25,9 @@ export default {
 
 <style scoped>
 	
-	.forecast {
-		font-size: 3em;
-		padding-bottom: 2%;
+	.tempHumidity {
+		text-orientation: sideways;
 	}
+
 
 </style>

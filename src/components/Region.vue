@@ -1,8 +1,7 @@
 <template>
 	<div>
 		<div class="wrapper">
-			<h1 class="title">Region Forecast</h1>
-			<div class="sub-title">Updates every 24-hrs</div>
+			<div class="title">Region Forecast</div>
 			<div v-if="selected">
 				<div class="forecast">{{ region }}</div>
 				<div class="weatherIcon">
@@ -40,7 +39,8 @@ export default {
 	data() {
 		return {
 			selected: '',
-			icon: ''
+			icon: '',
+			backgroundImg: ''
 		}
 	},
 	watch: {
@@ -49,25 +49,34 @@ export default {
 
 			if (regionForecast.includes('thunder')) {
 				this.icon = 'fas fa-bolt';
+				this.backgroundImg = 'thundery.jpg';
 			} else if (regionForecast.includes('showers')) {
 				this.icon = 'fas fa-cloud-showers-heavy';
+				this.backgroundImg = 'showers.jpg';
 			} else if (regionForecast.includes('rain')) {
 				if (regionForecast.includes('light')) {
 					this.icon = 'fas fa-cloud-sun-rain';
+					this.backgroundImg = 'showers.jpg';
 				} else {
 					this.icon = 'fas fa-cloud-showers-heavy';
+					this.backgroundImg = 'showers.jpg';
 				}
 			} else if (regionForecast.includes('cloudy')) {
 				this.icon = 'fas fa-cloud';
+				this.backgroundImg = 'cloudy.jpg';
 			} else if (regionForecast.includes('fair')) {
 				if (regionForecast.includes('night')) {
 					this.icon = 'fas fa-cloud-moon';
+					this.backgroundImg = 'fairNight.jpg';
 				} else {
 					this.icon = 'fas fa-cloud-sun';
+					this.backgroundImg = 'fair.jpg';
 				}
 			} else if (regionForecast.includes('windy')) {
 				this.icon = 'fas fa-wind';
+				this.backgroundImg = 'windy.jpg'
 			}
+			this.$emit('add-region-weather', this.backgroundImg);
 		}
 	},
 	computed: {
@@ -85,21 +94,4 @@ export default {
 
 <style scoped>
 
-	.dropdown {
-		display: flex;
-		justify-content: flex-start;
-		padding-top: 5%;
-	}
-
-	.select {
-		font-size: 1em;
-		cursor: pointer;
-	}
-
-	@media only screen and (max-width: 768px) {
-		.dropdown {
-			justify-content: center;
-		}
-	}
-	
 </style>
