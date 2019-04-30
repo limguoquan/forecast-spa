@@ -22,6 +22,7 @@ html {
 	background-attachment
 	background-position*/
 	background-size: cover;
+	min-height: 100vh;
 }
 
 /* For mobile phones: */
@@ -31,11 +32,11 @@ html {
 	padding: 15px;
 }
 
-/*.row::after {
+.row::after {
 	content: "";
 	clear: both;
 	display: table;
-}*/
+}
 
 .upper-half {
 	display: flex;
